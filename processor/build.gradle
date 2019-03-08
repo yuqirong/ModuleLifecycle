@@ -4,7 +4,9 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.google.auto.service:auto-service:1.0-rc4'
     compile 'com.squareup:javapoet:1.10.0'
-    compile project(':annotation')
+    compile 'com.orange.note:module-lifecycle-annotation:1.0.0'
+//    compile project(':annotation')
+
 }
 
 sourceCompatibility = "1.8"
@@ -14,4 +16,4 @@ ext {
     VERSION_NAME = "$PROCESSOR_VERSION"
     ARTIFACT_ID = 'module-lifecycle-compiler'
 }
-//apply from: "../maven.gradle"
+apply from: "../maven.gradle"

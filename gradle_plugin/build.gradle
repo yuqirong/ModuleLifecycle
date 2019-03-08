@@ -29,4 +29,4 @@ ext {
     VERSION_NAME = "$PLUGIN_VERSION"
     ARTIFACT_ID = 'module-lifecycle-gradle-plugin'
 }
-//apply from: "../maven.gradle"
+apply from: "../maven.gradle"

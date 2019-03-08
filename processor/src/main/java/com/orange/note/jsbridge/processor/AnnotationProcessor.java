@@ -22,7 +22,7 @@ import javax.tools.Diagnostic;
 @AutoService(Processor.class)
 public class AnnotationProcessor extends AbstractProcessor {
 
-    private static final String MODULE_NAME = "MODULE_NAME";
+    private static final String MODULE_NAME = "MODULE_LIFECYCLE_MODULE_NAME";
     private String moduleName;
     private Messager messager;
     private ModuleGenerator moduleGenerator;
