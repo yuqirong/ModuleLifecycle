@@ -101,7 +101,7 @@ public class ModuleLifecycle {
         try {
             Class<?> clazz = Class.forName(className);
             Method method = clazz.getMethod("getModuleList", List.class);
-            List<String> list = (List<String>) method.invoke(null, null);
+            List<String> list = (List<String>) method.invoke(null, new Object[]{});
             if (list != null && !list.isEmpty()) {
                 for (String string : list) {
                     Class<?> moduleClazz = Class.forName(string);
