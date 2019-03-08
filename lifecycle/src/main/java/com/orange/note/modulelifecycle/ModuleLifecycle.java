@@ -1,4 +1,4 @@
-package com.orange.note.lifecycle;
+package com.orange.note.modulelifecycle;
 
 import android.app.Activity;
 import android.app.Application;

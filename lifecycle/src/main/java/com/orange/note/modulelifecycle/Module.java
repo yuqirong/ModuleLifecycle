@@ -1,4 +1,4 @@
-package com.orange.note.lifecycle;
+package com.orange.note.modulelifecycle;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

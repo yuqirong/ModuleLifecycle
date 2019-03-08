@@ -1,4 +1,4 @@
-package com.orange.note.jsbridge.processor;
+package com.orange.note.modulelifecycle.processor;
 
 import com.google.auto.service.AutoService;
 import com.orange.note.modulelifecycle.annotation.Module;

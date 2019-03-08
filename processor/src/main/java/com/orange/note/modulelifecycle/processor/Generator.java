@@ -1,4 +1,4 @@
-package com.orange.note.jsbridge.processor;
+package com.orange.note.modulelifecycle.processor;
 
 import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.FieldSpec;

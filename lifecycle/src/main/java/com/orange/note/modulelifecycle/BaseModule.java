@@ -1,4 +1,4 @@
-package com.orange.note.lifecycle;
+package com.orange.note.modulelifecycle;
 
 /**
  * @author maomao
