@@ -2,8 +2,8 @@ package com.orange.note.modulelifecycle.demo;
 
 import android.util.Log;
 
-import com.orange.note.lifecycle.BaseModule;
-import com.orange.note.lifecycle.Module;
+import com.orange.note.modulelifecycle.BaseModule;
+import com.orange.note.modulelifecycle.annotation.Module;
 
 /**
  * @author maomao

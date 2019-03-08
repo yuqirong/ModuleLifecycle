@@ -2,7 +2,8 @@ package com.orange.note.modulelifecycle.demo;
 
 import android.app.Application;
 
-import com.orange.note.lifecycle.ModuleLifecycle;
+import com.orange.note.modulelifecycle.ModuleLifecycle;
+
 
 /**
  * @author maomao

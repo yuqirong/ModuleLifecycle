@@ -40,7 +40,7 @@ public abstract class Generator {
      */
     protected final boolean genClass(FieldSpec.Builder fieldSpec, MethodSpec.Builder mapMethod, CodeBlock.Builder codeBlock) {
         TypeSpec.Builder builder = TypeSpec.classBuilder(className)
-                .addJavadoc("this is auto generated code by jsbridge, don't edit it !!!")
+                .addJavadoc("this is auto generated code by module-lifecycle, don't edit it !!!")
                 .addModifiers(Modifier.PUBLIC, Modifier.FINAL);
         if (codeBlock != null) {
             builder = builder.addStaticBlock(codeBlock.build());
