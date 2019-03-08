@@ -1,0 +1,54 @@
+apply plugin: 'maven'
+
+if (project.plugins.hasPlugin("com.android.library")) {
+
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.srcDirs
+    }
+} else if (project.plugins.hasPlugin("java")) {
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from sourceSets.main.java.srcDirs
+    }
+} else if (project.plugins.hasPlugin("groovy")) {
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from sourceSets.main.groovy.srcDirs
+    }
+}
+
+if (project.tasks['sourcesJar']) {
+    artifacts {
+        archives sourcesJar
+    }
+}
+
+uploadArchives {
+
+    repositories {
+        mavenDeployer {
+
+            File file = new File("${rootProject.projectDir}/local.properties");
+            Properties properties = new Properties()
+            if (file.exists()) {
+                properties.load(file.newDataInputStream())
+                def USERNAME = properties.getProperty("username")
+                def PASSWORD = properties.getProperty("password")
+                if (USERNAME != null && PASSWORD != null) {
+                    repository(url: 'http://maven.91chengguo.com/repository/maven-releases/') {
+                        authentication(userName: USERNAME, password: PASSWORD)
+                    }
+                    snapshotRepository(url: 'http://maven.91chengguo.com/repository/maven-snapshots/') {
+                        authentication(userName: USERNAME, password: PASSWORD)
+                    }
+                }
+            }
+
+            pom.packaging = 'aar'
+            pom.version = "$VERSION_NAME"
+            pom.groupId = "$GROUP_ID" // Attention!
+            pom.artifactId = "$ARTIFACT_ID"
+        }
+    }
+}

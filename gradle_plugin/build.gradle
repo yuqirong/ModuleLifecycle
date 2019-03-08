@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'groovy'
+
+dependencies {
+}
+
+dependencies {
+    compile 'com.android.tools.build:gradle:2.1.3'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        groovy {
+            srcDir 'src/main/groovy'
+        }
+
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+}
+
+ext {
+    VERSION_NAME = "$PLUGIN_VERSION"
+    ARTIFACT_ID = 'module-lifecycle-gradle-plugin'
+}
+//apply from: "../maven.gradle"

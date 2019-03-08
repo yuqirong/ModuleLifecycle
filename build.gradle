@@ -1,10 +1,17 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+
 buildscript {
     repositories {
         google()
         jcenter()
-        
+        maven {
+            url "http://maven.91chengguo.com/repository/maven-releases/"
+        }
+        maven {
+            url "http://maven.91chengguo.com/repository/maven-snapshots/"
+        }
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.0'
@@ -18,7 +25,13 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        maven {
+            url "http://maven.91chengguo.com/repository/maven-releases/"
+        }
+        maven {
+            url "http://maven.91chengguo.com/repository/maven-snapshots/"
+        }
+
     }
 }
 

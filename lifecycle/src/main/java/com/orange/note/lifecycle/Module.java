@@ -1,4 +1,4 @@
-package com.orange.note.lifecycle.annotation;
+package com.orange.note.lifecycle;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -6,11 +6,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * app 冷启动的回调
+ * 注明是 module
+ *
  * @author maomao
- * @date 2019/3/7
+ * @date 2019/3/8
  */
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface OnAppCreate {
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.CLASS)
+public @interface Module {
 }

@@ -1,0 +1,14 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+ext {
+    VERSION_NAME = "$ANNOTATION_VERSION"
+    ARTIFACT_ID = 'module-lifecycle-annotation'
+}
+apply from: "../maven.gradle"

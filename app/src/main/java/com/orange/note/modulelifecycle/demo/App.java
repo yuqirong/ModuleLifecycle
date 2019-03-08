@@ -13,6 +13,6 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        ModuleLifecycle.getInstance().init(this);
+        ModuleLifecycle.init(this);
     }
 }
