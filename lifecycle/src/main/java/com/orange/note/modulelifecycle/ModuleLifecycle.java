@@ -105,7 +105,7 @@ public class ModuleLifecycle {
             if (list != null && !list.isEmpty()) {
                 for (String string : list) {
                     Class<?> moduleClazz = Class.forName(string);
-                    BaseModule o = (BaseModule) clazz.newInstance();
+                    BaseModule o = (BaseModule) moduleClazz.newInstance();
                     moduleMap.put(className, o);
                 }
             }

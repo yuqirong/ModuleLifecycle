@@ -27,7 +27,7 @@ public class PluginLaunch implements Plugin<Project> {
 
             //init arouter-auto-register settings
             ArrayList<ScanSetting> list = new ArrayList<>(1)
-            list.add(new ScanSetting('Module$$'))
+            list.add(new ScanSetting('Module$$Lifecycle$$'))
             RegisterTransform.registerList = list
             //register this plugin
             android.registerTransform(transformImpl)
