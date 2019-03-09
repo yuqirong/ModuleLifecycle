@@ -4,13 +4,13 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -21,8 +21,8 @@ public class ModuleLifecycle {
 
     private static final String TAG = "ModuleLifecycle";
     private static ModuleLifecycle instance;
-    private static Map<String, BaseModule> moduleMap = new HashMap<>();
-    private static volatile boolean init;
+    private static List<BaseModule> moduleList = new ArrayList<>();
+    private static volatile boolean init = false;
     private AtomicInteger onStartedInteger = new AtomicInteger(0);
 
     private ModuleLifecycle(Application application) {
@@ -97,21 +97,22 @@ public class ModuleLifecycle {
         return instance;
     }
 
+    // className for example : com.orange.note.modulelifecycle.template.Module$$Lifecycle$$app
     private static void registerModule(String className) {
         try {
-            if (moduleMap.containsKey(className)) {
-                Log.e(TAG, className + "has registered");
-                return;
-            }
             Class<?> clazz = Class.forName(className);
             Method method = clazz.getMethod("getModuleList");
             List<String> list = (List<String>) method.invoke(null, new Object[]{});
-            if (list != null && !list.isEmpty()) {
-                for (String string : list) {
-                    Class<?> moduleClazz = Class.forName(string);
-                    BaseModule o = (BaseModule) moduleClazz.newInstance();
-                    moduleMap.put(className, o);
+            if (list == null || list.isEmpty()) {
+                return;
+            }
+            for (String moduleClassName : list) {
+                if (TextUtils.isEmpty(moduleClassName)) {
+                    continue;
                 }
+                Class<?> moduleClazz = Class.forName(moduleClassName);
+                BaseModule module = (BaseModule) moduleClazz.newInstance();
+                moduleList.add(module);
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -141,7 +142,7 @@ public class ModuleLifecycle {
         if (!ProcessUtil.isMainProcess(context.getApplicationContext())) {
             return;
         }
-        for (BaseModule object : moduleMap.values()) {
+        for (BaseModule object : moduleList) {
             invokeAnnotationMethod(object, type);
         }
     }
