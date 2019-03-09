@@ -1,5 +1,6 @@
 package com.orange.note.modulelifecycle.processor;
 
+import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
@@ -42,6 +43,8 @@ public abstract class Generator {
         TypeSpec.Builder builder = TypeSpec.classBuilder(className)
                 .addJavadoc("this is auto generated code by module-lifecycle, don't edit it !!!")
                 .addModifiers(Modifier.PUBLIC, Modifier.FINAL);
+        // implement com.orange.note.modulelifecycle.template.Module$$Lifecycle
+        builder.addSuperinterface(ClassName.get(elementUtils.getTypeElement("com.orange.note.modulelifecycle.template.Module$$Lifecycle")));
         if (codeBlock != null) {
             builder = builder.addStaticBlock(codeBlock.build());
         }

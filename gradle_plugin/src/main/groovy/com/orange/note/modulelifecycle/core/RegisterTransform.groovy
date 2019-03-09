@@ -3,6 +3,8 @@ package com.orange.note.modulelifecycle.core
 import com.android.build.api.transform.*
 import com.android.build.gradle.internal.pipeline.TransformManager
 import com.orange.note.modulelifecycle.utils.ScanSetting
+import com.orange.note.modulelifecycle.utils.ScanUtil
+import com.orange.note.modulelifecycle.utils.Logger
 import org.apache.commons.codec.digest.DigestUtils
 import org.apache.commons.io.FileUtils
 import org.gradle.api.Project

@@ -79,7 +79,7 @@ class ScanUtil {
             RegisterTransform.registerList.each { ext ->
                 if (ext.interfaceName && interfaces != null) {
                     interfaces.each { itName ->
-                        if (itName.startsWith(ext.interfaceName)) {
+                        if (itName == ext.interfaceName) {
                             ext.classList.add(name)
                         }
                     }

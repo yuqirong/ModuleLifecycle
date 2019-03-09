@@ -99,8 +99,12 @@ public class ModuleLifecycle {
 
     private static void registerModule(String className) {
         try {
+            if (moduleMap.containsKey(className)) {
+                Log.e(TAG, className + "has registered");
+                return;
+            }
             Class<?> clazz = Class.forName(className);
-            Method method = clazz.getMethod("getModuleList", List.class);
+            Method method = clazz.getMethod("getModuleList");
             List<String> list = (List<String>) method.invoke(null, new Object[]{});
             if (list != null && !list.isEmpty()) {
                 for (String string : list) {

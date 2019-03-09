@@ -1,6 +1,7 @@
 package com.orange.note.modulelifecycle.core
 
 import com.orange.note.modulelifecycle.utils.ScanSetting
+import com.orange.note.modulelifecycle.utils.Logger
 import org.apache.commons.io.IOUtils
 import org.objectweb.asm.*
 

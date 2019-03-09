@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.orange.note.modulelifecycle'
 
 android {
     compileSdkVersion 28
