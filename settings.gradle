@@ -1,1 +1,1 @@
-include ':app', ':lifecycle', ':test_module', ':gradle_plugin', ':processor', ':annotation'
+include ':app', ':lifecycle', ':app_module', ':gradle_plugin', ':processor', ':annotation'
