@@ -85,6 +85,13 @@ Usage
         
 5. finally, just fucking do it !!!
 
-changelog
+Proguard
+========
+
+    #------- module lifecycle ----------
+    -keep class com.orange.note.modulelifecycle.** {*;}
+    -keep class * implements com.orange.note.modulelifecycle.BaseModule {*;}
+
+Changelog
 =========
 * v1.1.0 init commit

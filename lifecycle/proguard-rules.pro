@@ -19,3 +19,6 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+#------- module lifecycle ----------
+-keep class com.orange.note.modulelifecycle.** {*;}
+-keep class * implements com.orange.note.modulelifecycle.BaseModule {*;}
