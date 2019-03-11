@@ -70,6 +70,9 @@ public class AnnotationProcessor extends AbstractProcessor {
 
     private void getOptions(ProcessingEnvironment env) {
         moduleName = env.getOptions().get(MODULE_NAME);
+        if (moduleName == null || moduleName.length() == 0) {
+            throw new RuntimeException("please config MODULE_LIFECYCLE_MODULE_NAME in annotationProcessorOptions");
+        }
     }
 
 

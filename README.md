@@ -26,11 +26,24 @@ Usage
             // in the individual module build.gradle files
         }
         
-2. apply plugin and add dependencies to app/build.gradle
+2. apply plugin and add dependencies to app/build.gradle, besides add arguments in annotationProcessorOptions
 
         apply plugin: 'com.orange.note.modulelifecycle'
         
         ...
+        
+        android {
+        
+            defaultConfig {
+                
+                javaCompileOptions {
+                    annotationProcessorOptions {
+                        arguments = [MODULE_LIFECYCLE_MODULE_NAME: project.getName()]
+                    }
+                }
+            }
+            
+        }
         
         dependencies {
             implementation 'com.orange.note:module-lifecycle:1.1.0'
