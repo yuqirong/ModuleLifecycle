@@ -19,16 +19,18 @@ public interface BaseModule {
     void onAppStart(Activity activity);
 
     /**
-     * 在app进入前台 onResumed 之后
+     * 在activity进入前台 onResumed 之后
+     *
      * @param activity
      */
-    void onAppResume(Activity activity);
+    void onActivityResume(Activity activity);
 
     /**
-     * 在app进入前台 onPause 之后
+     * 在activity进入前台 onPaused 之后
+     *
      * @param activity
      */
-    void onAppPause(Activity activity);
+    void onActivityPause(Activity activity);
 
     /**
      * 在app进入后台的时候回调

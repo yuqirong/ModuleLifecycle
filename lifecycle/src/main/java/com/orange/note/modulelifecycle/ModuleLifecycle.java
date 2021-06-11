@@ -47,26 +47,12 @@ public class ModuleLifecycle {
 
             @Override
             public void onActivityResumed(Activity activity) {
-                onResumedInteger.incrementAndGet();
-                // 如果有异常情况小于0，就重置
-                if (onResumedInteger.get() < 0) {
-                    onResumedInteger = new AtomicInteger(0);
-                }
-                if (onResumedInteger.get() == 1) {
-                    notifyPluginEvent(activity, AppState.Type.ON_APP_RESUME);
-                }
+                notifyPluginEvent(activity, AppState.Type.ON_ACTIVITY_RESUME);
             }
 
             @Override
             public void onActivityPaused(Activity activity) {
-                onResumedInteger.decrementAndGet();
-                // 如果有异常情况小于0，就重置
-                if (onResumedInteger.get() < 0) {
-                    onResumedInteger = new AtomicInteger(0);
-                }
-                if (onResumedInteger.get() == 0) {
-                    notifyPluginEvent(activity, AppState.Type.ON_APP_PAUSE);
-                }
+                notifyPluginEvent(activity, AppState.Type.ON_ACTIVITY_PAUSE);
             }
 
             @Override
@@ -179,11 +165,11 @@ public class ModuleLifecycle {
             case AppState.Type.ON_APP_START:
                 plugin.onAppStart(activity);
                 break;
-            case AppState.Type.ON_APP_RESUME:
-                plugin.onAppResume(activity);
+            case AppState.Type.ON_ACTIVITY_RESUME:
+                plugin.onActivityResume(activity);
                 break;
-            case AppState.Type.ON_APP_PAUSE:
-                plugin.onAppPause(activity);
+            case AppState.Type.ON_ACTIVITY_PAUSE:
+                plugin.onActivityPause(activity);
                 break;
             case AppState.Type.ON_APP_STOP:
                 plugin.onAppStop(activity);

@@ -13,7 +13,7 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention(RetentionPolicy.SOURCE)
 @IntDef({AppState.Type.ON_APP_CREATE, AppState.Type.ON_APP_START,
-        AppState.Type.ON_APP_RESUME,AppState.Type.ON_APP_PAUSE,
+        AppState.Type.ON_ACTIVITY_RESUME,AppState.Type.ON_ACTIVITY_PAUSE,
         AppState.Type.ON_APP_STOP})
 @interface AppState {
 
@@ -28,14 +28,14 @@ import java.lang.annotation.RetentionPolicy;
         static final int ON_APP_START = 1;
 
         /**
-         * app回到前台并onResumed
+         * activity到前台并onResumed
          */
-        static final int ON_APP_RESUME = 2;
+        static final int ON_ACTIVITY_RESUME = 2;
 
         /**
-         * app从前台到onPaused
+         * activity从前台到onPaused
          */
-        static final int ON_APP_PAUSE = 3;
+        static final int ON_ACTIVITY_PAUSE = 3;
 
         /**
          * app退到后台
