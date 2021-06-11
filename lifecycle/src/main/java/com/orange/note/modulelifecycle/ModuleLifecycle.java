@@ -24,6 +24,7 @@ public class ModuleLifecycle {
     private static List<BaseModule> moduleList = new ArrayList<>();
     private static volatile boolean init = false;
     private AtomicInteger onStartedInteger = new AtomicInteger(0);
+    private AtomicInteger onResumedInteger = new AtomicInteger(0);
 
     private ModuleLifecycle(Application application) {
         application.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
@@ -46,12 +47,26 @@ public class ModuleLifecycle {
 
             @Override
             public void onActivityResumed(Activity activity) {
-
+                onResumedInteger.incrementAndGet();
+                // 如果有异常情况小于0，就重置
+                if (onResumedInteger.get() < 0) {
+                    onResumedInteger = new AtomicInteger(0);
+                }
+                if (onResumedInteger.get() == 1) {
+                    notifyPluginEvent(activity, AppState.Type.ON_APP_RESUME);
+                }
             }
 
             @Override
             public void onActivityPaused(Activity activity) {
-
+                onResumedInteger.decrementAndGet();
+                // 如果有异常情况小于0，就重置
+                if (onResumedInteger.get() < 0) {
+                    onResumedInteger = new AtomicInteger(0);
+                }
+                if (onResumedInteger.get() == 0) {
+                    notifyPluginEvent(activity, AppState.Type.ON_APP_PAUSE);
+                }
             }
 
             @Override
@@ -143,20 +158,35 @@ public class ModuleLifecycle {
             return;
         }
         for (BaseModule object : moduleList) {
-            invokeAnnotationMethod(object, type);
+            invokeAnnotationMethod(object, null, type);
         }
     }
 
-    private void invokeAnnotationMethod(BaseModule plugin, @AppState int type) {
+    private void notifyPluginEvent(Activity activity, @AppState int type) {
+        if (!ProcessUtil.isMainProcess(activity.getApplicationContext())) {
+            return;
+        }
+        for (BaseModule object : moduleList) {
+            invokeAnnotationMethod(object, activity, type);
+        }
+    }
+
+    private void invokeAnnotationMethod(BaseModule plugin, Activity activity, @AppState int type) {
         switch (type) {
             case AppState.Type.ON_APP_CREATE:
                 plugin.onAppCreate();
                 break;
             case AppState.Type.ON_APP_START:
-                plugin.onAppStart();
+                plugin.onAppStart(activity);
+                break;
+            case AppState.Type.ON_APP_RESUME:
+                plugin.onAppResume(activity);
+                break;
+            case AppState.Type.ON_APP_PAUSE:
+                plugin.onAppPause(activity);
                 break;
             case AppState.Type.ON_APP_STOP:
-                plugin.onAppStop();
+                plugin.onAppStop(activity);
                 break;
         }
     }
