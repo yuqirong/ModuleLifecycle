@@ -13,7 +13,7 @@ Module-Lifecycle
 
 latest version:
 
-* module-lifecycle:1.1.0
+* module-lifecycle:1.1.2
 * module-lifecycle-annotation:1.1.0
 * module-lifecycle-compiler:1.1.0
 * module-lifecycle-gradle-plugin:1.1.0
