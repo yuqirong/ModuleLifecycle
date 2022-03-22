@@ -1,6 +1,7 @@
 Module-Lifecycle
 ===============
-组件化模块之间感知app的生命周期，现主要有以下五个生命周期感知：
+本项目主要解决组件化/多模块项目开发时，模块内无法感知 Application/Activity 生命周期状态的问题。
+利用AOP思想实现模块化项目感知app的生命周期，无代码侵入。现主要有以下五个生命周期感知：
 
 1. onAppCreate()：app 冷启动，即 Application.onCreate() 时机；
 2. onAppStart(Activity activity)：app 进入到前台的时候，参数 activity 为当前前台 Activity；
@@ -52,19 +53,9 @@ Usage
             implementation 'com.orange.note:module-lifecycle-annotation:1.1.0'
             annotationProcessor 'com.orange.note:module-lifecycle-compiler:1.1.0'
         }
-        
-3. must be init ModuleLifecycle in your Application onCreate()
 
-        public class App extends Application {
         
-            @Override
-            public void onCreate() {
-                super.onCreate();
-                ModuleLifecycle.init(this);
-            }
-        }
-        
-4. create a module class, for example :
+3. create a module class, for example :
 
         @Module
         public class TestModule implements BaseModule {
@@ -99,7 +90,7 @@ Usage
         
         }
         
-5. finally, just fucking do it !!!
+4. finally, just fucking do it !!!
 
 Proguard
 ========

@@ -1,2 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.orange.note.lifecycle" />
+    package="com.orange.note.lifecycle">
+
+    <application>
+        <provider
+            android:name="com.orange.note.modulelifecycle.LifecycleAutoInitInstaller"
+            android:authorities="${applicationId}.LifecycleAutoInitInstaller"
+            android:enabled="true"
+            android:exported="false" />
+    </application>
+
+
+</manifest>

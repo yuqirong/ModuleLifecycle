@@ -5,17 +5,10 @@ buildscript {
     repositories {
         google()
         jcenter()
-        maven {
-            url "http://maven.91chengguo.com/repository/maven-releases/"
-        }
-        maven {
-            url "http://maven.91chengguo.com/repository/maven-snapshots/"
-        }
-
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.0'
-        classpath 'com.orange.note:module-lifecycle-gradle-plugin:1.1.0'
+        classpath files('module-lifecycle-gradle-plugin-1.1.0.jar')
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -25,13 +18,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven {
-            url "http://maven.91chengguo.com/repository/maven-releases/"
-        }
-        maven {
-            url "http://maven.91chengguo.com/repository/maven-snapshots/"
-        }
-
     }
 }
 

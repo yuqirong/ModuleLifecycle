@@ -2,8 +2,6 @@ package com.orange.note.modulelifecycle.demo;
 
 import android.app.Application;
 
-import com.orange.note.modulelifecycle.ModuleLifecycle;
-
 
 /**
  * @author maomao
@@ -14,6 +12,5 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        ModuleLifecycle.init(this);
     }
 }

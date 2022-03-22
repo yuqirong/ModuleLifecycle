@@ -1,5 +1,6 @@
 package com.orange.note.modulelifecycle.test_module;
 
+import android.app.Activity;
 import android.util.Log;
 
 import com.orange.note.modulelifecycle.BaseModule;
@@ -20,12 +21,22 @@ public class Test2Module implements BaseModule {
     }
 
     @Override
-    public void onAppStart() {
+    public void onAppStart(Activity activity) {
         Log.i(TAG, "Test2Module onAppStart ");
     }
 
     @Override
-    public void onAppStop() {
+    public void onActivityResume(Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityPause(Activity activity) {
+
+    }
+
+    @Override
+    public void onAppStop(Activity activity) {
         Log.i(TAG, "Test2Module onAppStop ");
     }
 
