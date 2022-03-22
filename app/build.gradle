@@ -28,12 +28,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.orange.note:module-lifecycle:1.1.0'
-    implementation 'com.orange.note:module-lifecycle-annotation:1.1.0'
-    annotationProcessor 'com.orange.note:module-lifecycle-compiler:1.1.0'
-//    implementation project(':lifecycle')
-//    implementation project(':annotation')
-//    annotationProcessor project(':processor')
+    implementation project(':lifecycle')
+    implementation project(':annotation')
+    annotationProcessor project(':processor')
 
     implementation project(':app_module')
     testImplementation 'junit:junit:4.12'
