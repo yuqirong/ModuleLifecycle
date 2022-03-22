@@ -1,10 +1,12 @@
 Module-Lifecycle
 ===============
-组件化模块之间感知app的生命周期，现主要有以下三个生命周期感知：
+组件化模块之间感知app的生命周期，现主要有以下五个生命周期感知：
 
-1. app 冷启动，即创建 application；
-2. app 进入到前台的时候；
-3. app 退回到后台的时候；
+1. onAppCreate()：app 冷启动，即 Application.onCreate() 时机；
+2. onAppStart(Activity activity)：app 进入到前台的时候，参数 activity 为当前前台 Activity；
+3. onActivityResume(Activity activity)： Activity 进入 onResume 的回调；
+4. onActivityPause(Activity activity)：Activity 进入 onPause 的回调；   
+3. onAppStop(Activity activity)：app 退回到后台的时候，参数 activity 为当前栈顶退回到后台的 Activity；
 
 被 @Module 注解的类会自动注册到 ModuleLifecycle 中，具体可以查看 gradle_plugin 模块
 
@@ -68,18 +70,32 @@ Usage
         public class TestModule implements BaseModule {
         
             private static final String TAG = "TAG";
-        
+
+            @Override
             public void onAppCreate() {
                 Log.i(TAG, " TestModule onAppCreate");
             }
         
-            public void onAppStart() {
+            @Override
+            public void onAppStart(Activity activity) {
                 Log.i(TAG, "TestModule onAppStart");
             }
-        
-            public void onAppStop() {
+
+            @Override
+            public void onAppStop(Activity activity) {
                 Log.i(TAG, "TestModule onAppStop");
             }
+
+            @Override
+            public void onActivityResume(Activity activity) {
+         
+            }
+         
+            @Override
+            public void onActivityPause(Activity activity) {
+         
+            }
+
         
         }
         
