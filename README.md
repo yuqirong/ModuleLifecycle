@@ -1,7 +1,7 @@
 Module-Lifecycle
 ===============
 本项目主要解决组件化/多模块项目开发时，模块内无法感知 Application/Activity 生命周期状态的问题。
-利用AOP思想实现模块化项目感知app的生命周期，无代码侵入。现主要有以下五个生命周期感知：
+利用AOP思想实现组件化/模块化项目感知app的生命周期，无代码侵入。现主要有以下五个生命周期感知：
 
 1. onAppCreate()：app 冷启动，即 Application.onCreate() 时机；
 2. onAppStart(Activity activity)：app 进入到前台的时候，参数 activity 为当前前台 Activity；
