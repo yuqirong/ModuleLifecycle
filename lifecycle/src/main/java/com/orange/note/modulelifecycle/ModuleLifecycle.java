@@ -140,18 +140,12 @@ public class ModuleLifecycle {
     }
 
     private void notifyPluginEvent(Context context, @AppState int type) {
-        if (!ProcessUtil.isMainProcess(context.getApplicationContext())) {
-            return;
-        }
         for (BaseModule object : moduleList) {
             invokeAnnotationMethod(object, null, type);
         }
     }
 
     private void notifyPluginEvent(Activity activity, @AppState int type) {
-        if (!ProcessUtil.isMainProcess(activity.getApplicationContext())) {
-            return;
-        }
         for (BaseModule object : moduleList) {
             invokeAnnotationMethod(object, activity, type);
         }
